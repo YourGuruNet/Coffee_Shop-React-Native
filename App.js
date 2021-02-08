@@ -9,7 +9,10 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer theme={AppBodyTheme}>
-      <Stack.Navigator initialRouteName="Home" screenOptions={AppBarTheme}>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={AppBarTheme}
+        headerMode="none">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Contact Us" component={ContactUsScreen} />
       </Stack.Navigator>
