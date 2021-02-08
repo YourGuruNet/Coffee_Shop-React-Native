@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {DefaultTheme} from '@react-navigation/native';
 
 export const styles = StyleSheet.create({
   textView: {
@@ -10,38 +9,49 @@ export const styles = StyleSheet.create({
   headerText: {
     fontSize: 30,
     paddingVertical: 10,
-    color: '#042037',
+    color: 'black',
   },
-  appButtonContainer: {
-    backgroundColor: '#042037',
+  subHeaderText: {
+    fontSize: 25,
     paddingVertical: 10,
-    paddingHorizontal: 25,
+    color: 'black',
+    textAlign: 'center',
+  },
+  bigMainButton: {
+    backgroundColor: 'black',
+    paddingVertical: 20,
+    alignSelf: 'stretch',
+    marginVertical: 10,
+    marginHorizontal: 40,
     elevation: 8,
-    borderBottomRightRadius: 8,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    borderRadius: 8,
   },
 
   appButtonText: {
-    color: '#728DA5',
+    color: 'white',
     fontSize: 15,
+    textAlign: 'center',
+  },
+
+  goBackButtonText: {
+    fontSize: 17,
+  },
+
+  menuTopButtonBarContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  menuTopButtonBarButton: {
+    backgroundColor: 'black',
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+    elevation: 8,
+    marginHorizontal: 2,
+  },
+
+  MenuTopButtonBarText: {
+    color: 'white',
+    fontSize: 15,
+    textAlign: 'center',
   },
 });
-
-export const AppBodyTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    background: '#2A4F6E',
-  },
-};
-
-export const AppBarTheme = {
-  headerStyle: {
-    backgroundColor: '#042037',
-  },
-  headerTintColor: '#728DA5',
-  headerTitleStyle: {
-    fontWeight: 'bold',
-  },
-};
