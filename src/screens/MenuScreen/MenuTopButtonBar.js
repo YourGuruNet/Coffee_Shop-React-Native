@@ -3,26 +3,24 @@ import {TouchableOpacity, View, Text} from 'react-native';
 import {styles} from '../../assets/Styles';
 
 const MenuTopButtonBar = ({navigation}) => {
+  const buttonContent = [
+    {title: 'Specialty', root: 'AddPaymentScreen'},
+    {title: 'Convenient', root: 'AddPaymentScreen'},
+    {title: 'Settings', root: 'AddPaymentScreen'},
+  ];
   return (
     <View style={styles.menuTopButtonBarContainer}>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => navigation.navigate('AddPaymentScreen')}
-        style={styles.menuTopButtonBarButton}>
-        <Text style={styles.MenuTopButtonBarText}>Specialty</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => navigation.navigate('AddPaymentScreen')}
-        style={styles.menuTopButtonBarButton}>
-        <Text style={styles.MenuTopButtonBarText}>Convenient</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => navigation.navigate('AddPaymentScreen')}
-        style={styles.menuTopButtonBarButton}>
-        <Text style={styles.MenuTopButtonBarText}>Settings</Text>
-      </TouchableOpacity>
+      {buttonContent.map((item, id) => {
+        return (
+          <TouchableOpacity
+            key={id}
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate(`${item.root}`)}
+            style={styles.menuTopButtonBarButton}>
+            <Text style={styles.MenuTopButtonBarText}>{item.title}</Text>
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 };
