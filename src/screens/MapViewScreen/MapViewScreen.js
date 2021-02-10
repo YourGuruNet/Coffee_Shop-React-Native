@@ -1,6 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, Text, View} from 'react-native';
 import {styles} from '../../assets/Styles';
+//import {Map} from './Map';
 
 const MapViewScreen = ({navigation}) => {
   return (
@@ -8,7 +9,7 @@ const MapViewScreen = ({navigation}) => {
       <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.goBack()}>
         <Text style={styles.goBackButtonText}>&#8656; Go Back</Text>
       </TouchableOpacity>
-      <Text style={styles.headerText}>Map View</Text>
+      {/*<Map />*/}
     </View>
   );
 };
