@@ -1,31 +1,10 @@
 import React from 'react';
 import {Text, View, FlatList, TouchableOpacity} from 'react-native';
 import {styles} from '../../assets/Styles';
-
-const CompanyList = [
-  {
-    id: '1',
-    title: 'SIA Coffee Shop',
-  },
-  {
-    id: '2',
-    title: 'Coffee and Go',
-  },
-  {
-    id: '3',
-    title: 'SIA Big Cup',
-  },
-  {
-    id: '4',
-    title: ' SIA Trīs Balti Krekli',
-  },
-  {
-    id: '5',
-    title: ' SIA Tasty Coffee',
-  },
-];
+import {shopData} from '../../data';
 
 const ShopsList = ({navigation}) => {
+  console.log(shopData[0].products[0].size.small);
   const renderItem = ({item}) => (
     <View style={styles.textView}>
       <TouchableOpacity
@@ -41,9 +20,9 @@ const ShopsList = ({navigation}) => {
   );
   return (
     <FlatList
-      data={CompanyList}
+      data={shopData}
       renderItem={renderItem}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id.toString()}
     />
   );
 };
