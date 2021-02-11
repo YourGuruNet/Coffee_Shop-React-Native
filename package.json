@@ -24,7 +24,11 @@
     "react-native-screens": "^2.17.1",
     "react-navigation-stack": "react-navigation/stack",
     "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-devtools": "^3.7.0",
     "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "remote-redux-devtools": "^0.5.16",
     "yarn": "^1.22.10"
   },
   "devDependencies": {
