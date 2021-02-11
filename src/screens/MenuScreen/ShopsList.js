@@ -9,6 +9,7 @@ import {
 } from '../../components/reducer/ShopListActions';
 
 const ShopsList = ({navigation, shopsList, getShopsList, getSelectedShop}) => {
+  console.log(shopsList);
   useEffect(() => {
     getShopsList(shopData);
   }, [getShopsList]);

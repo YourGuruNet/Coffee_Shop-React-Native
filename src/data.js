@@ -19,7 +19,7 @@ export const shopData = [
         size: {small: 2.99, medium: 3.99, large: 4.99},
       },
       {
-        productName: 'Ice Coffee',
+        productName: 'Tasty Coffee',
         productCountry: 'Germany',
         size: {small: 2.99, medium: 3.99, large: 4.99},
       },
@@ -45,7 +45,7 @@ export const shopData = [
         size: {small: 2.99, medium: 3.99, large: 4.99},
       },
       {
-        productName: 'Ice Coffee',
+        productName: 'Tasty Coffee',
         productCountry: 'Germany',
         size: {small: 2.99, medium: 3.99, large: 4.99},
       },
@@ -71,7 +71,7 @@ export const shopData = [
         size: {small: 2.99, medium: 3.99, large: 4.99},
       },
       {
-        productName: 'Ice Coffee',
+        productName: 'Tasty Coffee',
         productCountry: 'Germany',
         size: {small: 2.99, medium: 3.99, large: 4.99},
       },
@@ -97,7 +97,7 @@ export const shopData = [
         size: {small: 2.99, medium: 3.99, large: 4.99},
       },
       {
-        productName: 'Ice Coffee',
+        productName: 'Tasty Coffee',
         productCountry: 'Germany',
         size: {small: 2.99, medium: 3.99, large: 4.99},
       },
@@ -123,7 +123,7 @@ export const shopData = [
         size: {small: 2.99, medium: 3.99, large: 4.99},
       },
       {
-        productName: 'Ice Coffee',
+        productName: 'Tasty Coffee',
         productCountry: 'Germany',
         size: {small: 2.99, medium: 3.99, large: 4.99},
       },
