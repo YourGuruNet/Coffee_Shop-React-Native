@@ -3,6 +3,9 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
+# Override Firebase SDK Version
+$FirebaseSDKVersion = '7.6.0'
+
 target 'ReactNativeSwitchPages' do
   config = use_native_modules!
 
@@ -31,3 +34,9 @@ target 'ReactNativeSwitchPages-tvOS' do
     # Pods for testing
   end
 end
+
+# add the Firebase pod for Google Analytics
+pod 'Firebase/Analytics'
+pod 'Firebase/Firestore'
+# add pods for any other desired Firebase products
+# https://firebase.google.com/docs/ios/setup#available-pods

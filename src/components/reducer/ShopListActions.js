@@ -1,4 +1,4 @@
-//import firestore from '@react-native-firebase/firestore';
+import firestore from '@react-native-firebase/firestore';
 
 export const activitiesConst = {
   GET_SHOPS_LIST: 'GET_SHOPS_LIST',
@@ -7,8 +7,11 @@ export const activitiesConst = {
 
 export const getShopsList = (shopData) => {
   return async function (dispatch) {
-    //  const data = await firestore().collection('shopData').get();
-    //  console.log(data);
+    const data = await firestore()
+      .collection('shopData')
+      .doc('bDLod74T27rZ7kDOe8ZY')
+      .get();
+    console.log(data);
     dispatch({
       type: activitiesConst.GET_SHOPS_LIST,
       payload: shopData,
