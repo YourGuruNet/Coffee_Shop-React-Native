@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {Text, View, FlatList, TouchableOpacity} from 'react-native';
 import {styles} from '../../assets/Styles';
-import {shopData} from '../../data';
 import {connect} from 'react-redux';
 import {
   getSelectedShop,
@@ -10,7 +9,7 @@ import {
 
 const ShopsList = ({navigation, shopsList, getShopsList, getSelectedShop}) => {
   useEffect(() => {
-    getShopsList(shopData);
+    getShopsList();
   }, [getShopsList]);
   const renderItem = ({item}) => (
     <View style={styles.textView}>
@@ -40,7 +39,7 @@ const mapStateToProps = ({shopsListState: {shopsList}}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getShopsList: (shopData) => dispatch(getShopsList(shopData)),
+    getShopsList: () => dispatch(getShopsList()),
     getSelectedShop: (item, navigation) =>
       dispatch(getSelectedShop(item, navigation)),
   };

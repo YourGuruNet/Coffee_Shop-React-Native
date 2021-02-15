@@ -5,10 +5,9 @@ export const activitiesConst = {
   GET_SELECTED_SHOP: 'GET_SELECTED_SHOP',
 };
 
-export const getShopsList = (shopData) => {
+export const getShopsList = () => {
   return async function (dispatch) {
     const data = await firestore().collection('shopData').get();
-    // console.log(data._data.title);
     dispatch({
       type: activitiesConst.GET_SHOPS_LIST,
       payload: data._docs,
