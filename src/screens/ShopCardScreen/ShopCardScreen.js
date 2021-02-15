@@ -1,12 +1,18 @@
 import React from 'react';
-import {TouchableOpacity, Text, View, FlatList} from 'react-native';
+import {
+  TouchableOpacity,
+  Text,
+  View,
+  FlatList,
+  SafeAreaView,
+} from 'react-native';
 import {connect} from 'react-redux';
 import {StyleSheet} from 'react-native';
 
 const ShopCardScreen = ({navigation, selectedShop}) => {
   console.log(selectedShop);
   return (
-    <View>
+    <SafeAreaView>
       <TouchableOpacity
         style={{alignSelf: 'flex-start', padding: 10}}
         activeOpacity={0.8}
@@ -45,7 +51,7 @@ const ShopCardScreen = ({navigation, selectedShop}) => {
         style={shopCardStyles.bigMainButton}>
         <Text style={shopCardStyles.bigMainButtonText}>Clear cart</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
