@@ -7,14 +7,11 @@ export const activitiesConst = {
 
 export const getShopsList = (shopData) => {
   return async function (dispatch) {
-    const data = await firestore()
-      .collection('shopData')
-      .doc('bDLod74T27rZ7kDOe8ZY')
-      .get();
-    console.log(data);
+    const data = await firestore().collection('shopData').get();
+    // console.log(data._data.title);
     dispatch({
       type: activitiesConst.GET_SHOPS_LIST,
-      payload: shopData,
+      payload: data._docs,
     });
   };
 };

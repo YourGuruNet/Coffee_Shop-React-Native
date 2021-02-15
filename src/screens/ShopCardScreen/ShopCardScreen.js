@@ -18,7 +18,7 @@ const ShopCardScreen = ({navigation, selectedShop}) => {
         onPress={() => navigation.goBack()}>
         <Text style={{textAlign: 'center', fontSize: 18}}>&#8656;Go Back</Text>
       </TouchableOpacity>
-      <Text style={shopCardStyles.headerText}>{selectedShop.title}</Text>
+      <Text style={shopCardStyles.headerText}>{selectedShop._data.title}</Text>
 
       <FlatList
         data={selectedShop.products}

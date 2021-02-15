@@ -17,11 +17,13 @@ const ShopsList = ({navigation, shopsList, getShopsList, getSelectedShop}) => {
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => getSelectedShop(item, navigation)}>
-        <Text style={{fontSize: 20, paddingVertical: 5}}>{item.title}</Text>
+        <Text style={{fontSize: 20, paddingVertical: 5}}>
+          {item._data.title}
+        </Text>
       </TouchableOpacity>
     </View>
   );
-  return shopsList === undefined ? (
+  return shopsList === null ? (
     <Text style={{fontSize: 20, textAlign: 'center'}}>Loading...</Text>
   ) : (
     <FlatList
