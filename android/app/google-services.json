@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "10417751182",
+    "project_id": "coffeshopfirebas",
+    "storage_bucket": "coffeshopfirebas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10417751182:android:51451aead528f4987135df",
+        "android_client_info": {
+          "package_name": "com.reactnativeswitchpages"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10417751182-92vf2cvu136eqpjttcauaub22s5tbo34.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByosQ7Bmz0ijzZqF7wJzD7vzCKAvus77E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10417751182-92vf2cvu136eqpjttcauaub22s5tbo34.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

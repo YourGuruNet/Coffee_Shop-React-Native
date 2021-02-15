@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {StyleSheet} from 'react-native';
 
 const ShopCardScreen = ({navigation, selectedShop}) => {
-  console.log(selectedShop);
   return (
     <View>
       <TouchableOpacity
