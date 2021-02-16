@@ -8,9 +8,18 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import {StyleSheet} from 'react-native';
+import ShopCardFilterButtons from './ShopCardFilterButtons';
 
 const ShopCardScreen = ({navigation, selectedShop, root}) => {
-  return (
+  // get unique countries
+  const countryList = selectedShop._data.products.map((item) => {
+    return item.productCountry;
+  });
+  const uniqueCountryList = [...new Set(countryList)];
+
+  return selectedShop === undefined ? (
+    <Text style={{fontSize: 20, textAlign: 'center'}}>Loading...</Text>
+  ) : (
     <SafeAreaView>
       <TouchableOpacity
         style={{alignSelf: 'flex-start', padding: 10}}
@@ -23,6 +32,11 @@ const ShopCardScreen = ({navigation, selectedShop, root}) => {
           ? root.title
           : selectedShop._data.title}
       </Text>
+
+      <Text style={{textAlign: 'center', fontSize: 18}}>Choose by origin</Text>
+      <View>
+        <ShopCardFilterButtons uniqueCountryList={uniqueCountryList} />
+      </View>
 
       <FlatList
         data={selectedShop._data.products}
