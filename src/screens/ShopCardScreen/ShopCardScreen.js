@@ -9,7 +9,7 @@ import {
 import {connect} from 'react-redux';
 import {StyleSheet} from 'react-native';
 
-const ShopCardScreen = ({navigation, selectedShop}) => {
+const ShopCardScreen = ({navigation, selectedShop, root}) => {
   return (
     <SafeAreaView>
       <TouchableOpacity
@@ -18,10 +18,14 @@ const ShopCardScreen = ({navigation, selectedShop}) => {
         onPress={() => navigation.goBack()}>
         <Text style={{textAlign: 'center', fontSize: 18}}>&#8656;Go Back</Text>
       </TouchableOpacity>
-      <Text style={shopCardStyles.headerText}>{selectedShop._data.title}</Text>
+      <Text style={shopCardStyles.headerText}>
+        {selectedShop._data.title === null
+          ? root.title
+          : selectedShop._data.title}
+      </Text>
 
       <FlatList
-        data={selectedShop.products}
+        data={selectedShop._data.products}
         renderItem={({item}) => {
           return (
             <View style={shopCardStyles.productListItem}>
