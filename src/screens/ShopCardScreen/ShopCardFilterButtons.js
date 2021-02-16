@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  FlatList,
-  TouchableOpacity,
-  View,
-  Text,
-} from 'react-native';
+import {StyleSheet, FlatList, TouchableOpacity, Text} from 'react-native';
 
 const ShopCardFilterButtons = ({uniqueCountryList}) => {
   const renderItem = ({item}) => (

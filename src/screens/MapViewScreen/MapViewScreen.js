@@ -1,6 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Text, View} from 'react-native';
-import {styles} from '../../assets/Styles';
+import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
 //import {Map} from './Map';
 
 const MapViewScreen = ({navigation}) => {
@@ -9,9 +8,22 @@ const MapViewScreen = ({navigation}) => {
       <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.goBack()}>
         <Text style={styles.goBackButtonText}>&#8656; Go Back</Text>
       </TouchableOpacity>
+      <Text>Map Screen</Text>
       {/*<Map />*/}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  textView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  goBackButtonText: {
+    fontSize: 17,
+  },
+});
 
 export default MapViewScreen;

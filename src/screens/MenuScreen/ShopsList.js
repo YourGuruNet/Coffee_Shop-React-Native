@@ -1,13 +1,19 @@
 import React, {useEffect} from 'react';
-import {Text, View, FlatList, TouchableOpacity} from 'react-native';
-import {styles} from '../../assets/Styles';
+import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {
   getSelectedShop,
   getShopsList,
 } from '../../components/reducer/ShopListActions';
+import Loading from '../../components/Loading';
 
-const ShopsList = ({navigation, shopsList, getShopsList, getSelectedShop}) => {
+const ShopsList = ({
+  navigation,
+  shopsList,
+  getShopsList,
+  getSelectedShop,
+  loading,
+}) => {
   useEffect(() => {
     getShopsList();
   }, [getShopsList]);
@@ -16,14 +22,12 @@ const ShopsList = ({navigation, shopsList, getShopsList, getSelectedShop}) => {
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => getSelectedShop(item, navigation)}>
-        <Text style={{fontSize: 20, paddingVertical: 5}}>
-          {item._data.title}
-        </Text>
+        <Text style={styles.shopsListButton}>{item._data.title}</Text>
       </TouchableOpacity>
     </View>
   );
-  return shopsList === null ? (
-    <Text style={{fontSize: 20, textAlign: 'center'}}>Loading...</Text>
+  return loading ? (
+    <Loading />
   ) : (
     <FlatList
       data={shopsList}
@@ -33,8 +37,20 @@ const ShopsList = ({navigation, shopsList, getShopsList, getSelectedShop}) => {
   );
 };
 
-const mapStateToProps = ({shopsListState: {shopsList}}) => {
-  return {shopsList};
+const styles = StyleSheet.create({
+  textView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  shopsListButton: {
+    fontSize: 20,
+    paddingVertical: 5,
+  },
+});
+
+const mapStateToProps = ({shopsListState: {shopsList, loading}}) => {
+  return {shopsList, loading};
 };
 
 const mapDispatchToProps = (dispatch) => {

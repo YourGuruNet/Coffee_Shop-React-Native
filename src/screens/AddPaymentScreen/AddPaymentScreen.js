@@ -1,6 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {styles} from '../../assets/Styles';
+import {StyleSheet, Text, View} from 'react-native';
 
 const AddPaymentScreen = () => {
   return (
@@ -9,5 +8,18 @@ const AddPaymentScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  textView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerText: {
+    fontSize: 30,
+    paddingVertical: 10,
+    color: 'black',
+  },
+});
 
 export default AddPaymentScreen;

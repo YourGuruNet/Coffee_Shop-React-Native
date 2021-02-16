@@ -1,6 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
-import {styles} from '../../assets/Styles';
+import {StyleSheet, TouchableOpacity, View, Text} from 'react-native';
 
 const MenuTopButtonBar = ({navigation}) => {
   const buttonContent = [
@@ -24,5 +23,24 @@ const MenuTopButtonBar = ({navigation}) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  menuTopButtonBarContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  menuTopButtonBarButton: {
+    backgroundColor: 'black',
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+    elevation: 8,
+    marginHorizontal: 2,
+  },
+  MenuTopButtonBarText: {
+    color: 'white',
+    fontSize: 15,
+    textAlign: 'center',
+  },
+});
 
 export default MenuTopButtonBar;

@@ -17,15 +17,13 @@ const ShopCardScreen = ({navigation, selectedShop, root}) => {
   });
   const uniqueCountryList = [...new Set(countryList)];
 
-  return selectedShop === undefined ? (
-    <Text style={{fontSize: 20, textAlign: 'center'}}>Loading...</Text>
-  ) : (
+  return (
     <SafeAreaView>
       <TouchableOpacity
-        style={{alignSelf: 'flex-start', padding: 10}}
+        style={shopCardStyles.goBackButtonContainer}
         activeOpacity={0.8}
         onPress={() => navigation.goBack()}>
-        <Text style={{textAlign: 'center', fontSize: 18}}>&#8656;Go Back</Text>
+        <Text style={shopCardStyles.goBackButtonText}>&#8656;Go Back</Text>
       </TouchableOpacity>
       <Text style={shopCardStyles.headerText}>
         {selectedShop._data.title === null
@@ -33,7 +31,7 @@ const ShopCardScreen = ({navigation, selectedShop, root}) => {
           : selectedShop._data.title}
       </Text>
 
-      <Text style={{textAlign: 'center', fontSize: 18}}>Choose by origin</Text>
+      <Text style={shopCardStyles.filterTitle}>Choose by origin</Text>
       <View>
         <ShopCardFilterButtons uniqueCountryList={uniqueCountryList} />
       </View>
@@ -43,7 +41,7 @@ const ShopCardScreen = ({navigation, selectedShop, root}) => {
         renderItem={({item}) => {
           return (
             <View style={shopCardStyles.productListItem}>
-              <Text style={{fontSize: 20, paddingVertical: 5}}>
+              <Text style={shopCardStyles.productListTile}>
                 {item.productName}
               </Text>
             </View>
@@ -73,6 +71,18 @@ const ShopCardScreen = ({navigation, selectedShop, root}) => {
 };
 
 const shopCardStyles = StyleSheet.create({
+  goBackButtonContainer: {
+    alignSelf: 'flex-start',
+    padding: 10,
+  },
+  goBackButtonText: {
+    textAlign: 'center',
+    fontSize: 18,
+  },
+  filterTitle: {
+    textAlign: 'center',
+    fontSize: 18,
+  },
   headerText: {
     fontSize: 30,
     paddingVertical: 10,
@@ -86,6 +96,7 @@ const shopCardStyles = StyleSheet.create({
     padding: 20,
     margin: 10,
   },
+  productListTile: {fontSize: 20, paddingVertical: 5},
   bigMainButton: {
     backgroundColor: 'black',
     paddingVertical: 20,
