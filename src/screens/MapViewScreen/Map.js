@@ -1,19 +1,25 @@
 import React from 'react';
-import MapView from 'react-native-maps';
-
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import {StyleSheet, View} from 'react-native';
 const Map = () => {
   return (
     <MapView
-      style={{flex: 1}}
+      provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+      style={styles.map}
       region={{
-        latitude: 42.882004,
-        longitude: 74.582748,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.015,
+        longitudeDelta: 0.0121,
       }}
-      showsUserLocation={true}
-    />
+      showsUserLocation={true}></MapView>
   );
 };
+
+const styles = StyleSheet.create({
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+});
 
 export default Map;
