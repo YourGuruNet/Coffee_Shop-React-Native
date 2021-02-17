@@ -1,10 +1,10 @@
 import React from 'react';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 const Map = () => {
   return (
     <MapView
-      provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+      provider={PROVIDER_GOOGLE}
       style={styles.map}
       region={{
         latitude: 37.78825,
