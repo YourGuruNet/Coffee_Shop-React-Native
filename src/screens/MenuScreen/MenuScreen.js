@@ -18,7 +18,7 @@ const MenuScreen = ({navigation}) => {
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() =>
-          navigation.navigate('ShopCardScreen', {
+          navigation.navigate('CheckoutPageScreen', {
             title: 'SIA Coffee Shop',
           })
         }

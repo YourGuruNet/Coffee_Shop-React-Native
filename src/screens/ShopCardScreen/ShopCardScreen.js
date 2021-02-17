@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import {StyleSheet} from 'react-native';
 import ShopCardFilterButtons from './ShopCardFilterButtons';
 
-const ShopCardScreen = ({navigation, selectedShop, root}) => {
+const ShopCardScreen = ({navigation, selectedShop}) => {
   // get unique countries
   const countryList = selectedShop._data.products.map((item) => {
     return item.productCountry;
@@ -25,11 +25,7 @@ const ShopCardScreen = ({navigation, selectedShop, root}) => {
         onPress={() => navigation.goBack()}>
         <Text style={shopCardStyles.goBackButtonText}>&#8656;Go Back</Text>
       </TouchableOpacity>
-      <Text style={shopCardStyles.headerText}>
-        {selectedShop._data.title === null
-          ? root.title
-          : selectedShop._data.title}
-      </Text>
+      <Text style={shopCardStyles.headerText}>{selectedShop._data.title}</Text>
 
       <Text style={shopCardStyles.filterTitle}>Choose by origin</Text>
       <View>
