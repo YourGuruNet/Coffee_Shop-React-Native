@@ -12,7 +12,12 @@ const Map = () => {
         latitudeDelta: 0.018,
         longitudeDelta: 0.0121,
       }}
-      showsUserLocation={true}>
+      showsUserLocation={true}
+      showsMyLocationButton={true}
+      zoomEnabled={true}
+      rotateEnabled={true}
+      followsUserLocation={true}
+      showsCompass={true}>
       <Marker
         coordinate={{
           latitude: 56.948585716433456,
