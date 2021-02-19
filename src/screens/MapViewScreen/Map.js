@@ -6,6 +6,12 @@ const Map = () => {
     <MapView
       provider={PROVIDER_GOOGLE}
       style={styles.map}
+      region={{
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.018,
+        longitudeDelta: 0.0121,
+      }}
       showsUserLocation={true}>
       <Marker
         coordinate={{
