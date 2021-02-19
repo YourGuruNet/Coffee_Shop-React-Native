@@ -28,7 +28,6 @@ const MapViewScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    marginTop: 50,
     margin: 10,
     height: 700,
 
