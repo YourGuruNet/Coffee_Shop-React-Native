@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import {StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 
 const Map = ({shopsList}) => {
+  const [region, setRegion] = useState({
+    latitude: 56.94822111842025,
+    longitude: 24.120130859938694,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
+  });
   return (
     <MapView
       provider={PROVIDER_GOOGLE}
+      region={region}
+      onRegionChangeComplete={(region) => setRegion(region)}
       style={styles.map}
       showsUserLocation={true}
       showsMyLocationButton={true}>
@@ -19,7 +27,8 @@ const Map = ({shopsList}) => {
               longitude: item._data.coordinate.longitude,
             }}
             title={item._data.title}
-            description={item._data.description}></Marker>
+            description={item._data.description}
+            pinColor="orange"></Marker>
         );
       })}
     </MapView>

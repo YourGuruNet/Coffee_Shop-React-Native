@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
     margin: 10,
+    marginTop: 35,
     height: 700,
 
     justifyContent: 'flex-end',
