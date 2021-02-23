@@ -1,45 +1,48 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
-
+import {
+  Container,
+  Header,
+  Content,
+  Form,
+  Item,
+  Input,
+  Label,
+  Button,
+  Text,
+  Body,
+  Title,
+  Left,
+  Icon,
+} from 'native-base';
 const LoginScreen = ({navigation}) => {
   return (
-    <View style={styles.textView}>
-      <Text style={styles.headerText}>Login page</Text>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => navigation.navigate('MenuScreen')}
-        style={styles.bigMainButtonContainer}>
-        <Text style={styles.bigMainButtonText}>Login</Text>
-      </TouchableOpacity>
-    </View>
+    <Container>
+      <Header>
+        <Body>
+          <Title>Coffee Shop</Title>
+        </Body>
+      </Header>
+      <Content>
+        <Form>
+          <Item floatingLabel>
+            <Label>Username</Label>
+            <Input />
+          </Item>
+          <Item floatingLabel last>
+            <Label>Password</Label>
+            <Input />
+          </Item>
+        </Form>
+        <Button
+          style={{margin: 10}}
+          block
+          dark
+          onPress={() => navigation.navigate('MenuScreen')}>
+          <Text>Login</Text>
+        </Button>
+      </Content>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  textView: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  headerText: {
-    fontSize: 30,
-    paddingVertical: 10,
-    color: 'black',
-  },
-  bigMainButtonContainer: {
-    backgroundColor: 'black',
-    paddingVertical: 20,
-    alignSelf: 'stretch',
-    marginVertical: 10,
-    marginHorizontal: 40,
-    elevation: 8,
-    borderRadius: 8,
-  },
-  bigMainButtonText: {
-    color: 'white',
-    fontSize: 15,
-    textAlign: 'center',
-  },
-});
 
 export default LoginScreen;
