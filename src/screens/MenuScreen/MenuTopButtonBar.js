@@ -1,6 +1,7 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View, Text} from 'react-native';
-
+import {View} from 'react-native';
+import {Button, Text} from 'native-base';
+import {baseStyles} from '../../assets/styles';
 const MenuTopButtonBar = ({navigation}) => {
   const buttonContent = [
     {title: 'Specialty', root: 'AddPaymentScreen'},
@@ -8,39 +9,20 @@ const MenuTopButtonBar = ({navigation}) => {
     {title: 'Settings', root: 'AddPaymentScreen'},
   ];
   return (
-    <View style={styles.menuTopButtonBarContainer}>
+    <View style={baseStyles.menuTopButtonBarContainer}>
       {buttonContent.map((item, id) => {
         return (
-          <TouchableOpacity
+          <Button
             key={id}
-            activeOpacity={0.8}
-            onPress={() => navigation.navigate(`${item.root}`)}
-            style={styles.menuTopButtonBarButton}>
-            <Text style={styles.MenuTopButtonBarText}>{item.title}</Text>
-          </TouchableOpacity>
+            full
+            style={baseStyles.mainSmallButton}
+            onPress={() => navigation.navigate(`${item.root}`)}>
+            <Text style={baseStyles.mainButtonText}>{item.title}</Text>
+          </Button>
         );
       })}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  menuTopButtonBarContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  menuTopButtonBarButton: {
-    backgroundColor: 'black',
-    paddingVertical: 20,
-    paddingHorizontal: 30,
-    elevation: 8,
-    marginHorizontal: 2,
-  },
-  MenuTopButtonBarText: {
-    color: 'white',
-    fontSize: 15,
-    textAlign: 'center',
-  },
-});
 
 export default MenuTopButtonBar;
