@@ -1,46 +1,36 @@
 import React from 'react';
 import {
   Container,
-  Header,
-  Content,
   Form,
   Item,
   Input,
   Label,
   Button,
   Text,
-  Body,
   Title,
-  Left,
-  Icon,
 } from 'native-base';
+import {baseStyles, baseColorDark} from '../../assets/styles';
+
 const LoginScreen = ({navigation}) => {
   return (
-    <Container>
-      <Header>
-        <Body>
-          <Title>Coffee Shop</Title>
-        </Body>
-      </Header>
-      <Content>
-        <Form>
-          <Item floatingLabel>
-            <Label>Username</Label>
-            <Input />
-          </Item>
-          <Item floatingLabel last>
-            <Label>Password</Label>
-            <Input />
-          </Item>
-        </Form>
+    <Container style={baseStyles.container}>
+      <Form style={baseStyles.loginForm}>
+        <Title style={baseStyles.heading1}>Welcome to Coffee Shop</Title>
+        <Item floatingLabel style={baseStyles.loginFormInput}>
+          <Label style={baseStyles.loginFormLabel}>Username</Label>
+          <Input selectionColor={baseColorDark} />
+        </Item>
+        <Item floatingLabel style={baseStyles.loginFormInput}>
+          <Label style={baseStyles.loginFormLabel}>Password</Label>
+          <Input selectionColor={baseColorDark} />
+        </Item>
         <Button
-          style={{margin: 10}}
+          style={baseStyles.mainButton}
           block
-          dark
           onPress={() => navigation.navigate('MenuScreen')}>
-          <Text>Login</Text>
+          <Text style={baseStyles.mainButtonText}>Login</Text>
         </Button>
-      </Content>
+      </Form>
     </Container>
   );
 };

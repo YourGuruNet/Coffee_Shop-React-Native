@@ -13,7 +13,7 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {ShopsListReducer} from './src/components/reducer/ShopsListReducer';
 
-// Store setup
+//Redux store setup
 const middleware = [thunk];
 
 const store = createStore(
