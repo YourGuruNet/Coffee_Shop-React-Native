@@ -17,6 +17,7 @@ const ShopsList = ({
   useEffect(() => {
     getShopsList();
   }, [getShopsList]);
+  console.log(shopsList);
   return loading ? (
     <Loading />
   ) : (

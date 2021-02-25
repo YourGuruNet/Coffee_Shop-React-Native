@@ -4,6 +4,7 @@ export const activitiesConst = {
   SET_LOADING: 'SET_LOADING',
   GET_SHOPS_LIST: 'GET_SHOPS_LIST',
   GET_SELECTED_SHOP: 'GET_SELECTED_SHOP',
+  FILTER_BY_COUNTRY: 'FILTER_BY_COUNTRY',
 };
 
 export const setLoading = () => {
@@ -29,5 +30,26 @@ export const getSelectedShop = (item, navigation) => {
       payload: item,
     });
     navigation.navigate('ShopCardScreen');
+  };
+};
+
+//Update filters by country
+export const updateFilter = (country, selectedShopProducts) => {
+  let filteredProducts;
+  if (country === 'All') {
+    filteredProducts = selectedShopProducts._data.products;
+  } else {
+    filteredProducts = selectedShopProducts._data.products.filter(function (
+      item,
+    ) {
+      return item.productCountry == country;
+    });
+  }
+
+  return async function (dispatch) {
+    dispatch({
+      type: activitiesConst.FILTER_BY_COUNTRY,
+      payload: filteredProducts,
+    });
   };
 };

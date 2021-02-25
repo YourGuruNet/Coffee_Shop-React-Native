@@ -1,5 +1,10 @@
 import React, {Fragment} from 'react';
-import {TouchableOpacity, View, SafeAreaView} from 'react-native';
+import {
+  TouchableOpacity,
+  View,
+  SafeAreaView,
+  ColorPropType,
+} from 'react-native';
 import {connect} from 'react-redux';
 import ShopCardFilterButtons from './ShopCardFilterButtons';
 import {
@@ -16,12 +21,15 @@ import {
 import {baseStyles} from '../../assets/styles';
 import coffeePicture from '../../assets/images/coffee.png';
 
-const ShopCardScreen = ({navigation, selectedShop}) => {
+const ShopCardScreen = ({navigation, selectedShop, selectedShopProducts}) => {
   // get unique countries
   const countryList = selectedShop._data.products.map((item) => {
     return item.productCountry;
   });
-  const uniqueCountryList = [...new Set(countryList)];
+  // add all
+  const newCountryList = ['All', ...countryList];
+
+  const uniqueCountryList = [...new Set(newCountryList)];
 
   return (
     <Fragment>
@@ -44,7 +52,7 @@ const ShopCardScreen = ({navigation, selectedShop}) => {
           }}>
           <Content>
             <List style={baseStyles.menuListContainer}>
-              {selectedShop._data.products.map((item, id) => {
+              {selectedShopProducts.map((item, id) => {
                 return (
                   <ListItem style={baseStyles.menuListItem} key={id}>
                     <Thumbnail source={coffeePicture} />
@@ -91,8 +99,10 @@ const ShopCardScreen = ({navigation, selectedShop}) => {
   );
 };
 
-const mapStateToProps = ({shopsListState: {selectedShop}}) => {
-  return {selectedShop};
+const mapStateToProps = ({
+  shopsListState: {selectedShop, selectedShopProducts},
+}) => {
+  return {selectedShop, selectedShopProducts};
 };
 
 export default connect(mapStateToProps)(ShopCardScreen);
