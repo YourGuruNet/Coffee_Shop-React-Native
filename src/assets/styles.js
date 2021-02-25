@@ -111,4 +111,15 @@ export const baseStyles = StyleSheet.create({
   menuListItem: {
     borderColor: baseColorDark,
   },
+
+  // Map view
+  mapContainer: {
+    ...StyleSheet.absoluteFillObject,
+    margin: 10,
+    marginTop: 45,
+    height: 700,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: baseColorLight,
+  },
 });

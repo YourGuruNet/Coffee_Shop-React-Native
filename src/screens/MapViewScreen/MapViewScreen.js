@@ -1,46 +1,26 @@
-import React from 'react';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  View,
-  SafeAreaView,
-} from 'react-native';
+import React, {Fragment} from 'react';
+import {View, SafeAreaView} from 'react-native';
 import Map from './Map';
+import {baseStyles} from '../../assets/styles';
+import {Container, Button, Text, Content} from 'native-base';
 
 const MapViewScreen = ({navigation}) => {
   return (
-    <SafeAreaView>
-      <View style={styles.textView}>
-        <TouchableOpacity
-          activeOpacity={0.8}
+    <Fragment>
+      <SafeAreaView style={baseStyles.safeAreaView} />
+      <Container style={baseStyles.container}>
+        <Button
+          transparent
+          style={baseStyles.goBackButtonContainer}
           onPress={() => navigation.goBack()}>
-          <Text style={styles.goBackButtonText}>&#8656; Go Back</Text>
-        </TouchableOpacity>
-        <View style={styles.container}>
+          <Text style={baseStyles.goBackButtonText}>&#8656;Go Back</Text>
+        </Button>
+        <View style={baseStyles.mapContainer}>
           <Map />
         </View>
-      </View>
-    </SafeAreaView>
+      </Container>
+    </Fragment>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    margin: 10,
-    marginTop: 35,
-    height: 700,
-
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  textView: {},
-
-  goBackButtonText: {
-    padding: 5,
-    fontSize: 17,
-  },
-});
 
 export default MapViewScreen;

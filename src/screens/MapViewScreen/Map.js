@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import {StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
+import {baseColorDark} from '../../assets/styles';
 
 const Map = ({shopsList}) => {
   const [region, setRegion] = useState({
@@ -28,7 +29,7 @@ const Map = ({shopsList}) => {
             }}
             title={item._data.title}
             description={item._data.description}
-            pinColor="orange"></Marker>
+            pinColor={baseColorDark}></Marker>
         );
       })}
     </MapView>
