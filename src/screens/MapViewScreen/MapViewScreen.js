@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import {View, SafeAreaView} from 'react-native';
 import Map from './Map';
 import {baseStyles} from '../../assets/styles';
-import {Container, Button, Text, Content} from 'native-base';
+import {Container, Button, Text} from 'native-base';
 
 const MapViewScreen = ({navigation}) => {
   return (
