@@ -1,8 +1,13 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Content, Spinner} from 'native-base';
+import {baseColorDark} from '../assets/styles';
 
 const Loading = () => {
-  return <Text style={{fontSize: 20, textAlign: 'center'}}>Loading...</Text>;
+  return (
+    <Content>
+      <Spinner color={baseColorDark} />
+    </Content>
+  );
 };
 
 export default Loading;
