@@ -1,10 +1,5 @@
 import React, {Fragment} from 'react';
-import {
-  TouchableOpacity,
-  View,
-  SafeAreaView,
-  ColorPropType,
-} from 'react-native';
+import {TouchableOpacity, View, SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
 import ShopCardFilterButtons from './ShopCardFilterButtons';
 import {
