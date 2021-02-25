@@ -29,7 +29,8 @@ export const baseStyles = StyleSheet.create({
   //Buttons
   mainButton: {
     backgroundColor: baseColorDark,
-    margin: 30,
+    marginTop: 30,
+    marginHorizontal: 30,
     borderRadius: 8,
     borderBottomEndRadius: 0,
     borderTopLeftRadius: 0,
@@ -41,6 +42,46 @@ export const baseStyles = StyleSheet.create({
   },
   mainSmallButton: {
     backgroundColor: baseColorDark,
+  },
+
+  addToCardButton: {
+    padding: 2,
+    backgroundColor: baseColorDark,
+  },
+  addToCardButtonText: {
+    padding: 4,
+    fontSize: 13,
+    color: baseColorLight,
+  },
+
+  goBackButtonContainer: {
+    alignSelf: 'flex-start',
+    padding: 10,
+  },
+  goBackButtonText: {
+    textAlign: 'center',
+    fontSize: 18,
+    color: baseColorDark,
+    paddingLeft: 0,
+  },
+
+  //ShopCardFilterButtons
+
+  filterButtonListItem: {
+    borderColor: 'transparent',
+    marginLeft: 0,
+    padding: 0,
+  },
+
+  //ShopCardFilterScreen
+  coffeeSizesButton: {
+    fontSize: 20,
+    color: baseColorDark,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    marginBottom: 4,
+    borderColor: baseColorDark,
+    borderWidth: 1,
   },
 
   // Login page styles

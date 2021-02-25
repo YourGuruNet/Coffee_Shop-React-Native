@@ -1,14 +1,20 @@
-import React from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  View,
-  FlatList,
-  SafeAreaView,
-} from 'react-native';
+import React, {Fragment} from 'react';
+import {TouchableOpacity, View, SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
-import {StyleSheet} from 'react-native';
 import ShopCardFilterButtons from './ShopCardFilterButtons';
+import {
+  Container,
+  Button,
+  Text,
+  Content,
+  List,
+  ListItem,
+  Body,
+  Title,
+  Thumbnail,
+} from 'native-base';
+import {baseStyles} from '../../assets/styles';
+import coffeePicture from '../../assets/images/coffee.png';
 
 const ShopCardScreen = ({navigation, selectedShop}) => {
   // get unique countries
@@ -18,96 +24,72 @@ const ShopCardScreen = ({navigation, selectedShop}) => {
   const uniqueCountryList = [...new Set(countryList)];
 
   return (
-    <SafeAreaView>
-      <TouchableOpacity
-        style={shopCardStyles.goBackButtonContainer}
-        activeOpacity={0.8}
-        onPress={() => navigation.goBack()}>
-        <Text style={shopCardStyles.goBackButtonText}>&#8656;Go Back</Text>
-      </TouchableOpacity>
-      <Text style={shopCardStyles.headerText}>{selectedShop._data.title}</Text>
+    <Fragment>
+      <SafeAreaView style={baseStyles.safeAreaView} />
+      <Container style={baseStyles.container}>
+        <Button
+          transparent
+          style={baseStyles.goBackButtonContainer}
+          onPress={() => navigation.goBack()}>
+          <Text style={baseStyles.goBackButtonText}>&#8656;Go Back</Text>
+        </Button>
+        <Title style={baseStyles.heading1}>{selectedShop._data.title}</Title>
+        <Title style={baseStyles.heading3}>Choose by origin</Title>
+        <View>
+          <ShopCardFilterButtons uniqueCountryList={uniqueCountryList} />
+        </View>
+        <View
+          style={{
+            height: 350,
+          }}>
+          <Content>
+            <List style={baseStyles.menuListContainer}>
+              {selectedShop._data.products.map((item, id) => {
+                return (
+                  <ListItem style={baseStyles.menuListItem} key={id}>
+                    <Thumbnail source={coffeePicture} />
+                    <Body>
+                      <Text style={baseStyles.heading2}>
+                        {item.productName}
+                      </Text>
+                    </Body>
+                    <View>
+                      <View style={{flexDirection: 'row'}}>
+                        <Text style={baseStyles.coffeeSizesButton}>S</Text>
+                        <Text style={baseStyles.coffeeSizesButton}>M</Text>
+                        <Text style={baseStyles.coffeeSizesButton}>L</Text>
+                      </View>
+                      <TouchableOpacity style={baseStyles.addToCardButton}>
+                        <Text style={baseStyles.addToCardButtonText}>
+                          Add to cart
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </ListItem>
+                );
+              })}
+            </List>
+          </Content>
+        </View>
+        <Button
+          style={baseStyles.mainButton}
+          block
+          onPress={() =>
+            navigation.navigate('CheckoutPageScreen', {title: 'test'})
+          }>
+          <Text style={baseStyles.mainButtonText}>Proceed to checkout</Text>
+        </Button>
 
-      <Text style={shopCardStyles.filterTitle}>Choose by origin</Text>
-      <View>
-        <ShopCardFilterButtons uniqueCountryList={uniqueCountryList} />
-      </View>
-
-      <FlatList
-        data={selectedShop._data.products}
-        renderItem={({item}) => {
-          return (
-            <View style={shopCardStyles.productListItem}>
-              <Text style={shopCardStyles.productListTile}>
-                {item.productName}
-              </Text>
-            </View>
-          );
-        }}
-        keyExtractor={(item) => item.productName}
-      />
-
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() =>
-          navigation.navigate('CheckoutPageScreen', {title: 'test'})
-        }
-        style={shopCardStyles.bigMainButton}>
-        <Text style={shopCardStyles.bigMainButtonText}>
-          Proceed to checkout
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => navigation.navigate('MenuScreen')}
-        style={shopCardStyles.bigMainButton}>
-        <Text style={shopCardStyles.bigMainButtonText}>Clear cart</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+        <Button
+          style={baseStyles.mainButton}
+          block
+          onPress={() => navigation.navigate('MenuScreen')}>
+          <Text style={baseStyles.mainButtonText}>Clear cart</Text>
+        </Button>
+      </Container>
+    </Fragment>
   );
 };
-
-const shopCardStyles = StyleSheet.create({
-  goBackButtonContainer: {
-    alignSelf: 'flex-start',
-    padding: 10,
-  },
-  goBackButtonText: {
-    textAlign: 'center',
-    fontSize: 18,
-  },
-  filterTitle: {
-    textAlign: 'center',
-    fontSize: 18,
-  },
-  headerText: {
-    fontSize: 30,
-    paddingVertical: 10,
-    textAlign: 'center',
-  },
-  productListItem: {
-    flex: 1,
-    alignSelf: 'stretch',
-    backgroundColor: 'grey',
-    borderWidth: 1,
-    padding: 20,
-    margin: 10,
-  },
-  productListTile: {fontSize: 20, paddingVertical: 5},
-  bigMainButton: {
-    backgroundColor: 'black',
-    paddingVertical: 20,
-    alignSelf: 'stretch',
-    marginVertical: 10,
-    marginHorizontal: 40,
-    elevation: 8,
-    borderRadius: 8,
-  },
-  bigMainButtonText: {
-    color: 'white',
-    fontSize: 15,
-    textAlign: 'center',
-  },
-});
 
 const mapStateToProps = ({shopsListState: {selectedShop}}) => {
   return {selectedShop};
