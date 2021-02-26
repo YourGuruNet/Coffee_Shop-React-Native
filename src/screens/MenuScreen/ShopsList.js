@@ -7,6 +7,7 @@ import {
 import Loading from '../../components/Loading';
 import {Content, List, ListItem, Text, Body, Right} from 'native-base';
 import {baseStyles} from '../../assets/styles';
+
 const ShopsList = ({
   navigation,
   shopsList,

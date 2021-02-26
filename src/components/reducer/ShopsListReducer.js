@@ -6,6 +6,7 @@ const defaultState = {
   shopsList: [],
   selectedShop: null,
   selectedShopProducts: null,
+  cart: [],
 };
 // Reducer setup
 export const ShopsListReducer = (state = defaultState, action) => {
@@ -25,6 +26,22 @@ export const ShopsListReducer = (state = defaultState, action) => {
       return {
         ...state,
         selectedShopProducts: action.payload,
+      };
+    case activitiesConst.ADD_TO_CART:
+      return {
+        ...state,
+        cart: [
+          ...state.cart,
+          {
+            selectedShop: '',
+            productTile: action.payload.productName,
+            size: '',
+            quantity: 1,
+            sugar: 0,
+            milk: false,
+            comment: '',
+          },
+        ],
       };
     default:
       return state;

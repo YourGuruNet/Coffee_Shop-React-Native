@@ -5,6 +5,7 @@ export const activitiesConst = {
   GET_SHOPS_LIST: 'GET_SHOPS_LIST',
   GET_SELECTED_SHOP: 'GET_SELECTED_SHOP',
   FILTER_BY_COUNTRY: 'FILTER_BY_COUNTRY',
+  ADD_TO_CART: 'ADD_TO_CART',
 };
 
 export const setLoading = () => {
@@ -45,11 +46,20 @@ export const updateFilter = (country, selectedShopProducts) => {
       return item.productCountry == country;
     });
   }
-
   return async function (dispatch) {
     dispatch({
       type: activitiesConst.FILTER_BY_COUNTRY,
       payload: filteredProducts,
+    });
+  };
+};
+
+//Add to cart
+export const addToCart = (item) => {
+  return async function (dispatch) {
+    dispatch({
+      type: activitiesConst.ADD_TO_CART,
+      payload: item,
     });
   };
 };

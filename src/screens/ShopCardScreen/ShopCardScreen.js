@@ -15,8 +15,16 @@ import {
 } from 'native-base';
 import {baseStyles} from '../../assets/styles';
 import coffeePicture from '../../assets/images/coffee.png';
+import {addToCart} from '../../components/reducer/ShopListActions';
 
-const ShopCardScreen = ({navigation, selectedShop, selectedShopProducts}) => {
+const ShopCardScreen = ({
+  navigation,
+  selectedShop,
+  selectedShopProducts,
+  addToCart,
+  cart,
+}) => {
+  console.log(cart);
   // get unique countries
   const countryList = selectedShop._data.products.map((item) => {
     return item.productCountry;
@@ -62,7 +70,9 @@ const ShopCardScreen = ({navigation, selectedShop, selectedShopProducts}) => {
                         <Text style={baseStyles.coffeeSizesButton}>M</Text>
                         <Text style={baseStyles.coffeeSizesButton}>L</Text>
                       </View>
-                      <TouchableOpacity style={baseStyles.addToCardButton}>
+                      <TouchableOpacity
+                        style={baseStyles.addToCardButton}
+                        onPress={() => addToCart(item)}>
                         <Text style={baseStyles.addToCardButtonText}>
                           Add to cart
                         </Text>
@@ -95,9 +105,15 @@ const ShopCardScreen = ({navigation, selectedShop, selectedShopProducts}) => {
 };
 
 const mapStateToProps = ({
-  shopsListState: {selectedShop, selectedShopProducts},
+  shopsListState: {selectedShop, selectedShopProducts, cart},
 }) => {
-  return {selectedShop, selectedShopProducts};
+  return {selectedShop, selectedShopProducts, cart};
 };
 
-export default connect(mapStateToProps)(ShopCardScreen);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (item) => dispatch(addToCart(item)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShopCardScreen);
