@@ -15,7 +15,10 @@ import {
 } from 'native-base';
 import {baseStyles} from '../../assets/styles';
 import coffeePicture from '../../assets/images/coffee.png';
-import {addToCart} from '../../components/reducer/ShopListActions';
+import {
+  addToCart,
+  removeAllItems,
+} from '../../components/reducer/ShopListActions';
 
 const ShopCardScreen = ({
   navigation,
@@ -23,6 +26,7 @@ const ShopCardScreen = ({
   selectedShopProducts,
   addToCart,
   cart,
+  removeAllItems,
 }) => {
   console.log(cart);
   // get unique countries
@@ -72,7 +76,7 @@ const ShopCardScreen = ({
                       </View>
                       <TouchableOpacity
                         style={baseStyles.addToCardButton}
-                        onPress={() => addToCart(item)}>
+                        onPress={() => addToCart(item, selectedShop)}>
                         <Text style={baseStyles.addToCardButtonText}>
                           Add to cart
                         </Text>
@@ -84,21 +88,38 @@ const ShopCardScreen = ({
             </List>
           </Content>
         </View>
-        <Button
-          style={baseStyles.mainButton}
-          block
-          onPress={() =>
-            navigation.navigate('CheckoutPageScreen', {title: 'test'})
-          }>
-          <Text style={baseStyles.mainButtonText}>Proceed to checkout</Text>
-        </Button>
-
-        <Button
-          style={baseStyles.mainButton}
-          block
-          onPress={() => navigation.navigate('MenuScreen')}>
-          <Text style={baseStyles.mainButtonText}>Clear cart</Text>
-        </Button>
+        {cart <= 0 ? (
+          <Button
+            disabled
+            style={baseStyles.mainButton}
+            block
+            onPress={() =>
+              navigation.navigate('CheckoutPageScreen', {title: 'test'})
+            }>
+            <Text style={baseStyles.mainButtonText}>
+              No products in the cart
+            </Text>
+          </Button>
+        ) : (
+          <Button
+            style={baseStyles.mainButton}
+            block
+            onPress={() =>
+              navigation.navigate('CheckoutPageScreen', {title: 'test'})
+            }>
+            <Text style={baseStyles.mainButtonText}>Proceed to checkout</Text>
+          </Button>
+        )}
+        {cart <= 0 ? (
+          <Text />
+        ) : (
+          <Button
+            style={baseStyles.mainButton}
+            block
+            onPress={() => removeAllItems()}>
+            <Text style={baseStyles.mainButtonText}>Clear cart</Text>
+          </Button>
+        )}
       </Container>
     </Fragment>
   );
@@ -112,7 +133,8 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (item) => dispatch(addToCart(item)),
+    addToCart: (item, selectedShop) => dispatch(addToCart(item, selectedShop)),
+    removeAllItems: () => dispatch(removeAllItems()),
   };
 };
 

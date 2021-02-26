@@ -6,6 +6,7 @@ export const activitiesConst = {
   GET_SELECTED_SHOP: 'GET_SELECTED_SHOP',
   FILTER_BY_COUNTRY: 'FILTER_BY_COUNTRY',
   ADD_TO_CART: 'ADD_TO_CART',
+  CLEAR_CART: 'CLEAR_CART',
 };
 
 export const setLoading = () => {
@@ -55,11 +56,19 @@ export const updateFilter = (country, selectedShopProducts) => {
 };
 
 //Add to cart
-export const addToCart = (item) => {
+export const addToCart = (item, selectedShop) => {
   return async function (dispatch) {
     dispatch({
       type: activitiesConst.ADD_TO_CART,
       payload: item,
+      shopName: selectedShop._data.title,
     });
+  };
+};
+
+//Remove all items from cart
+export const removeAllItems = () => {
+  return async function (dispatch) {
+    dispatch({type: activitiesConst.CLEAR_CART});
   };
 };
