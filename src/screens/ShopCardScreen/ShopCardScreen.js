@@ -76,7 +76,7 @@ const ShopCardScreen = ({
                       </View>
                       <TouchableOpacity
                         style={baseStyles.addToCardButton}
-                        onPress={() => addToCart(item, selectedShop)}>
+                        onPress={() => addToCart(item, selectedShop, cart)}>
                         <Text style={baseStyles.addToCardButtonText}>
                           Add to cart
                         </Text>
@@ -133,7 +133,8 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (item, selectedShop) => dispatch(addToCart(item, selectedShop)),
+    addToCart: (item, selectedShop, cart) =>
+      dispatch(addToCart(item, selectedShop, cart)),
     removeAllItems: () => dispatch(removeAllItems()),
   };
 };

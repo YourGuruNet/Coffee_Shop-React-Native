@@ -7,6 +7,7 @@ export const activitiesConst = {
   FILTER_BY_COUNTRY: 'FILTER_BY_COUNTRY',
   ADD_TO_CART: 'ADD_TO_CART',
   CLEAR_CART: 'CLEAR_CART',
+  INCREASE: 'INCREASE',
 };
 
 export const setLoading = () => {
@@ -56,19 +57,42 @@ export const updateFilter = (country, selectedShopProducts) => {
 };
 
 //Add to cart
-export const addToCart = (item, selectedShop) => {
-  return async function (dispatch) {
-    dispatch({
-      type: activitiesConst.ADD_TO_CART,
-      payload: item,
-      shopName: selectedShop._data.title,
-    });
-  };
+export const addToCart = (item, selectedShop, cart) => {
+  console.log({item});
+  const product = [...cart].find(
+    (product) =>
+      product.productName === item.productName &&
+      product.selectedShop === selectedShop._data.title,
+  );
+  if (product) {
+    return async function (dispatch) {
+      dispatch(increaseAmount(product, selectedShop));
+    };
+  } else {
+    return async function (dispatch) {
+      dispatch({
+        type: activitiesConst.ADD_TO_CART,
+        payload: item,
+        shopName: selectedShop._data.title,
+      });
+    };
+  }
 };
 
 //Remove all items from cart
 export const removeAllItems = () => {
   return async function (dispatch) {
     dispatch({type: activitiesConst.CLEAR_CART});
+  };
+};
+
+// Increase amount
+const increaseAmount = (product, selectedShop) => {
+  return async function (dispatch) {
+    dispatch({
+      type: activitiesConst.INCREASE,
+      productName: product.productName,
+      selectedShop: selectedShop._data.title,
+    });
   };
 };

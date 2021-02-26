@@ -34,7 +34,7 @@ export const ShopsListReducer = (state = defaultState, action) => {
           ...state.cart,
           {
             selectedShop: action.shopName,
-            productTile: action.payload.productName,
+            productName: action.payload.productName,
             size: '',
             quantity: 1,
             sugar: 0,
@@ -42,6 +42,19 @@ export const ShopsListReducer = (state = defaultState, action) => {
             comment: '',
           },
         ],
+      };
+    case activitiesConst.INCREASE:
+      return {
+        ...state,
+        cart: state.cart.map((item) => {
+          return item.productName === action.productName &&
+            item.selectedShop === action.selectedShop
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : {...item};
+        }),
       };
     case activitiesConst.CLEAR_CART:
       return {
