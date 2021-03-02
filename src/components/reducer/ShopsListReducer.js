@@ -2,7 +2,7 @@ import {activitiesConst} from './ShopListActions';
 
 // Setup initial states
 const defaultState = {
-  loading: true,
+  loading: false,
   shopsList: [],
   selectedShop: null,
   selectedShopProducts: null,

@@ -96,16 +96,3 @@ export const increaseAmount = (product, selectedShop) => {
     });
   };
 };
-
-// Animations
-
-export const NavigateToNextPageAnimation = (
-  navigate,
-  AnimationRef,
-  navigation,
-) => {
-  AnimationRef.current?.slideOutRight();
-  setTimeout(function () {
-    navigation.navigate(navigate);
-  }, 500);
-};
