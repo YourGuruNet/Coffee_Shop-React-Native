@@ -19,6 +19,7 @@ import {
   addToCart,
   removeAllItems,
 } from '../../components/reducer/ShopListActions';
+import * as Animatable from 'react-native-animatable';
 
 const ShopCardScreen = ({
   navigation,
@@ -41,18 +42,26 @@ const ShopCardScreen = ({
     <Fragment>
       <SafeAreaView style={baseStyles.safeAreaView} />
       <Container style={baseStyles.container}>
-        <Button
-          transparent
-          style={baseStyles.goBackButtonContainer}
-          onPress={() => navigation.goBack()}>
-          <Text style={baseStyles.goBackButtonText}>&#8656;Go Back</Text>
-        </Button>
-        <Title style={baseStyles.heading1}>{selectedShop._data.title}</Title>
-        <Title style={baseStyles.heading3}>Choose by origin</Title>
-        <View>
+        <Animatable.View animation="fadeInLeft" delay={150}>
+          <Button
+            transparent
+            style={baseStyles.goBackButtonContainer}
+            onPress={() => navigation.goBack()}>
+            <Text style={baseStyles.goBackButtonText}>&#8656;Go Back</Text>
+          </Button>
+        </Animatable.View>
+        <Animatable.View animation="fadeInRight" delay={150}>
+          <Title style={baseStyles.heading1}>{selectedShop._data.title}</Title>
+        </Animatable.View>
+        <Animatable.View animation="fadeInLeft" delay={150}>
+          <Title style={baseStyles.heading3}>Choose by origin</Title>
+        </Animatable.View>
+        <Animatable.View animation="fadeInRight" delay={150}>
           <ShopCardFilterButtons uniqueCountryList={uniqueCountryList} />
-        </View>
-        <View
+        </Animatable.View>
+        <Animatable.View
+          animation="fadeIn"
+          delay={350}
           style={{
             height: 350,
           }}>
@@ -86,37 +95,41 @@ const ShopCardScreen = ({
               })}
             </List>
           </Content>
-        </View>
-        {cart <= 0 ? (
-          <Button
-            disabled
-            style={baseStyles.mainButton}
-            block
-            onPress={() => navigation.navigate('CheckoutPageScreen')}>
-            <Text style={baseStyles.mainButtonText}>
-              No products in the cart
-            </Text>
-          </Button>
-        ) : (
-          <Button
-            style={baseStyles.mainButton}
-            block
-            onPress={() =>
-              navigation.navigate('CheckoutPageScreen', {title: 'test'})
-            }>
-            <Text style={baseStyles.mainButtonText}>Proceed to checkout</Text>
-          </Button>
-        )}
-        {cart <= 0 ? (
-          <Text />
-        ) : (
-          <Button
-            style={baseStyles.mainButton}
-            block
-            onPress={() => removeAllItems()}>
-            <Text style={baseStyles.mainButtonText}>Clear cart</Text>
-          </Button>
-        )}
+        </Animatable.View>
+        <Animatable.View animation="fadeInLeft" delay={150}>
+          {cart <= 0 ? (
+            <Button
+              disabled
+              style={baseStyles.mainButton}
+              block
+              onPress={() => navigation.navigate('CheckoutPageScreen')}>
+              <Text style={baseStyles.mainButtonText}>
+                No products in the cart
+              </Text>
+            </Button>
+          ) : (
+            <Button
+              style={baseStyles.mainButton}
+              block
+              onPress={() =>
+                navigation.navigate('CheckoutPageScreen', {title: 'test'})
+              }>
+              <Text style={baseStyles.mainButtonText}>Proceed to checkout</Text>
+            </Button>
+          )}
+        </Animatable.View>
+        <Animatable.View animation="fadeInRight" delay={150}>
+          {cart <= 0 ? (
+            <Text />
+          ) : (
+            <Button
+              style={baseStyles.mainButton}
+              block
+              onPress={() => removeAllItems()}>
+              <Text style={baseStyles.mainButtonText}>Clear cart</Text>
+            </Button>
+          )}
+        </Animatable.View>
       </Container>
     </Fragment>
   );
