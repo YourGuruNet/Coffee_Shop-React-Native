@@ -9,6 +9,7 @@ export const activitiesConst = {
   CLEAR_CART: 'CLEAR_CART',
   INCREASE: 'INCREASE',
   INCREASE_QUANTITY: 'INCREASE_QUANTITY',
+  SHOW_SELECTED_SHOP_IN_MAP: 'SHOW_SELECTED_SHOP_IN_MAP',
 };
 
 export const setLoading = () => {
@@ -93,6 +94,17 @@ export const increaseAmount = (product, selectedShop) => {
       type: activitiesConst.INCREASE,
       productName: product.productName,
       selectedShop: selectedShop._data.title,
+    });
+  };
+};
+
+// Show shop in map
+
+export const showSelectedShopInMap = (item) => {
+  return async function (dispatch) {
+    dispatch({
+      type: activitiesConst.SHOW_SELECTED_SHOP_IN_MAP,
+      payload: item._data,
     });
   };
 };

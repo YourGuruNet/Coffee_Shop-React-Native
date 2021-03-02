@@ -4,13 +4,14 @@ import {StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {baseColorDark} from '../../assets/styles';
 
-const Map = ({shopsList}) => {
+const Map = ({showShopInMap}) => {
   const [region, setRegion] = useState({
     latitude: 56.94822111842025,
     longitude: 24.120130859938694,
     latitudeDelta: 0.01,
     longitudeDelta: 0.01,
   });
+  console.log(showShopInMap);
   return (
     <MapView
       provider={PROVIDER_GOOGLE}
@@ -19,19 +20,14 @@ const Map = ({shopsList}) => {
       style={styles.map}
       showsUserLocation={true}
       showsMyLocationButton={true}>
-      {shopsList.map((item, id) => {
-        return (
-          <Marker
-            key={id}
-            coordinate={{
-              latitude: item._data.coordinate.latitude,
-              longitude: item._data.coordinate.longitude,
-            }}
-            title={item._data.title}
-            description={item._data.description}
-            pinColor={baseColorDark}></Marker>
-        );
-      })}
+      {showShopInMap.coordinate ? (
+        <Marker
+          coordinate={{
+            latitude: showShopInMap.coordinate.latitude,
+            longitude: showShopInMap.coordinate.longitude,
+          }}
+          pinColor={baseColorDark}></Marker>
+      ) : null}
     </MapView>
   );
 };
@@ -42,8 +38,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({shopsListState: {shopsList}}) => {
-  return {shopsList};
+const mapStateToProps = ({shopsListState: {showShopInMap}}) => {
+  return {showShopInMap};
 };
 
 export default connect(mapStateToProps)(Map);

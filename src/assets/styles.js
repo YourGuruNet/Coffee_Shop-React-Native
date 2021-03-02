@@ -114,13 +114,14 @@ export const baseStyles = StyleSheet.create({
 
   // Map view
   mapContainer: {
-    ...StyleSheet.absoluteFillObject,
     margin: 10,
-    marginTop: 45,
-    height: 700,
+
+    height: '50%',
     justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: baseColorLight,
+    borderColor: baseColorDark,
+    borderWidth: 2,
   },
 
   //Card item

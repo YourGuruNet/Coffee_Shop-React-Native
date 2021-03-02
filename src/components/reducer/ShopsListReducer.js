@@ -7,6 +7,7 @@ const defaultState = {
   selectedShop: null,
   selectedShopProducts: null,
   cart: [],
+  showShopInMap: [],
 };
 // Reducer setup
 export const ShopsListReducer = (state = defaultState, action) => {
@@ -21,6 +22,11 @@ export const ShopsListReducer = (state = defaultState, action) => {
         selectedShop: action.payload,
         selectedShopProducts: action.payload._data.products,
         loading: false,
+      };
+    case activitiesConst.SHOW_SELECTED_SHOP_IN_MAP:
+      return {
+        ...state,
+        showShopInMap: action.payload,
       };
     case activitiesConst.FILTER_BY_COUNTRY:
       return {
