@@ -8,6 +8,7 @@ export const activitiesConst = {
   ADD_TO_CART: 'ADD_TO_CART',
   CLEAR_CART: 'CLEAR_CART',
   INCREASE: 'INCREASE',
+  INCREASE_QUANTITY: 'INCREASE_QUANTITY',
 };
 
 export const setLoading = () => {
@@ -58,7 +59,6 @@ export const updateFilter = (country, selectedShopProducts) => {
 
 //Add to cart
 export const addToCart = (item, selectedShop, cart) => {
-  console.log({item});
   const product = [...cart].find(
     (product) =>
       product.productName === item.productName &&
@@ -87,7 +87,7 @@ export const removeAllItems = () => {
 };
 
 // Increase amount
-const increaseAmount = (product, selectedShop) => {
+export const increaseAmount = (product, selectedShop) => {
   return async function (dispatch) {
     dispatch({
       type: activitiesConst.INCREASE,

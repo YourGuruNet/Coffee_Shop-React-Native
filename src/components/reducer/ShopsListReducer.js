@@ -56,6 +56,7 @@ export const ShopsListReducer = (state = defaultState, action) => {
             : {...item};
         }),
       };
+
     case activitiesConst.CLEAR_CART:
       return {
         ...state,

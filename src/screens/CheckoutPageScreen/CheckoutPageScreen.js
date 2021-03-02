@@ -1,46 +1,51 @@
-import React from 'react';
-import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
-
-const CheckoutPageScreen = ({navigation, route}) => {
-  const {title} = route.params;
+import React, {Fragment} from 'react';
+import {SafeAreaView} from 'react-native';
+import {connect} from 'react-redux';
+import {baseStyles} from '../../assets/styles';
+import {Container, Button, Text, Title, View, List, Content} from 'native-base';
+import CartItem from './CartItem';
+const CheckoutPageScreen = ({navigation, cart}) => {
   return (
-    <View style={styles.textView}>
-      <Text style={styles.headerText}>{title}</Text>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => navigation.navigate('AddPaymentScreen')}
-        style={styles.bigMainButtonContainer}>
-        <Text style={styles.bigMainButtonText}>Slide to confirm</Text>
-      </TouchableOpacity>
-    </View>
+    <Fragment>
+      <SafeAreaView style={baseStyles.safeAreaView} />
+      <Container style={baseStyles.container}>
+        <Title style={baseStyles.heading2}>Checkout page</Title>
+        <View
+          style={{
+            height: '80%',
+            margin: 10,
+          }}>
+          <Content>
+            <List>
+              {cart.map((item, id) => {
+                return <CartItem key={id} id={id} item={item} />;
+              })}
+            </List>
+          </Content>
+        </View>
+        <Button
+          style={baseStyles.mainButton}
+          block
+          onPress={() => navigation.navigate('AddPaymentScreen')}>
+          <Text style={baseStyles.mainButtonText}>Slide to confirm</Text>
+        </Button>
+      </Container>
+    </Fragment>
   );
 };
 
-const styles = StyleSheet.create({
-  textView: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  headerText: {
-    fontSize: 30,
-    paddingVertical: 10,
-    color: 'black',
-  },
-  bigMainButtonContainer: {
-    backgroundColor: 'black',
-    paddingVertical: 20,
-    alignSelf: 'stretch',
-    marginVertical: 10,
-    marginHorizontal: 40,
-    elevation: 8,
-    borderRadius: 8,
-  },
-  bigMainButtonText: {
-    color: 'white',
-    fontSize: 15,
-    textAlign: 'center',
-  },
-});
+const mapStateToProps = ({
+  shopsListState: {selectedShop, selectedShopProducts, cart},
+}) => {
+  return {selectedShop, selectedShopProducts, cart};
+};
 
-export default CheckoutPageScreen;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (item, selectedShop, cart) =>
+      dispatch(addToCart(item, selectedShop, cart)),
+    removeAllItems: () => dispatch(removeAllItems()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutPageScreen);

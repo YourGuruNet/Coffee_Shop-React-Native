@@ -28,7 +28,6 @@ const ShopCardScreen = ({
   cart,
   removeAllItems,
 }) => {
-  console.log(cart);
   // get unique countries
   const countryList = selectedShop._data.products.map((item) => {
     return item.productCountry;
@@ -93,9 +92,7 @@ const ShopCardScreen = ({
             disabled
             style={baseStyles.mainButton}
             block
-            onPress={() =>
-              navigation.navigate('CheckoutPageScreen', {title: 'test'})
-            }>
+            onPress={() => navigation.navigate('CheckoutPageScreen')}>
             <Text style={baseStyles.mainButtonText}>
               No products in the cart
             </Text>

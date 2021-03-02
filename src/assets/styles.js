@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 // Main color roots
 export const baseColorLight = '#7C83AF';
 export const baseColorDark = '#080F3A';
-
+export const heightProportion = '80%';
 // Base styles for app
 export const baseStyles = StyleSheet.create({
   safeAreaView: {
@@ -121,5 +121,22 @@ export const baseStyles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: baseColorLight,
+  },
+
+  //Card item
+  card: {
+    padding: 8,
+    backgroundColor: '#4D658D',
+    borderColor: baseColorDark,
+  },
+  cardListItem: {
+    paddingTop: 2,
+    paddingBottom: 2,
+    justifyContent: 'center',
+    borderColor: 'transparent',
+  },
+  cardForm: {
+    borderColor: baseColorDark,
+    color: baseColorDark,
   },
 });
