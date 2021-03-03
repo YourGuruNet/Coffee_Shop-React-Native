@@ -18,7 +18,6 @@ import {connect} from 'react-redux';
 import {increaseAmount} from '../../components/reducer/ShopListActions';
 
 const CartItem = ({item, cart, id}) => {
-  console.log(cart);
   return (
     <Card style={baseStyles.card}>
       <Title style={baseStyles.heading2}>{item.selectedShop}</Title>

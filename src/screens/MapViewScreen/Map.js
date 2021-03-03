@@ -13,7 +13,6 @@ const Map = ({showShopInMap}) => {
     latitudeDelta: 0.01,
     longitudeDelta: 0.01,
   });
-  console.log(showShopInMap);
   return (
     <MapView
       provider={PROVIDER_GOOGLE}
