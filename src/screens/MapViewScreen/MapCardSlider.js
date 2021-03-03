@@ -26,41 +26,40 @@ const MapCardSlider = ({
   showSelectedShopInMap,
 }) => {
   return (
-    <Container>
-      <View style={{margin: 10}}>
-        <DeckSwiper
-          dataSource={shopsList}
-          renderItem={(item) => (
-            <Card style={{elevation: 3}}>
-              <CardItem>
-                <Left>
-                  <Thumbnail source={logo} />
-                  <Body>
-                    <Text>{item._data.title}</Text>
-                    <Text note>{item._data.description}</Text>
-                  </Body>
-                </Left>
-              </CardItem>
-              <CardItem>
-                <Button
-                  bordered
-                  success
-                  onPress={() => showSelectedShopInMap(item, navigation)}>
-                  <Text>Show in map</Text>
-                </Button>
-                <Button
-                  bordered
-                  warning
-                  style={{marginLeft: 10}}
-                  onPress={() => getSelectedShop(item, navigation)}>
-                  <Text>Go to shop</Text>
-                </Button>
-              </CardItem>
-            </Card>
-          )}
-        />
-      </View>
-    </Container>
+    <View style={baseStyles.mapCardSliderContainer}>
+      <DeckSwiper
+        dataSource={shopsList}
+        renderItem={(item) => (
+          <Card>
+            <CardItem>
+              <Left>
+                <Thumbnail source={logo} />
+                <Body>
+                  <Text>{item._data.title}</Text>
+                  <Text note>{item._data.description}</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem>
+              <Button
+                style={baseStyles.mapCardButtonLeft}
+                onPress={() => showSelectedShopInMap(item, navigation)}>
+                <Text style={baseStyles.mapCardButtonLeftText}>
+                  Show in map
+                </Text>
+              </Button>
+              <Button
+                style={baseStyles.mapCardButtonRight}
+                onPress={() => getSelectedShop(item, navigation)}>
+                <Text style={baseStyles.mapCardButtonRightText}>
+                  Go to shop
+                </Text>
+              </Button>
+            </CardItem>
+          </Card>
+        )}
+      />
+    </View>
   );
 };
 
